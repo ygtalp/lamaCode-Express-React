@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 react-frontend/node_modules
+payment-stripe-jwt-api/node_modules
 /.pnp
 .pnp.js
 .vscode
