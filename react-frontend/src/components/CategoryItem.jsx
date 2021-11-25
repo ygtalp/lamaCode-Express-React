@@ -1,24 +1,22 @@
 import { ArrowRightOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   flex: 1;
-  margin: 5px;
+  margin: 3px;
   height: 70vh;
   position: relative;
-  &:hover {
-    -webkit-box-shadow: 0px 7px 12px 0px rgba(0, 0, 0, 0.8);
-    -moz-box-shadow: 0px 7px 12px 0px rgba(0, 0, 0, 0.8);
-    box-shadow: 0px 7px 12px 0px rgba(0, 0, 0, 0.8);
-    transform: scale(1.005);
-  }
 `;
+
 const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  ${mobile({ height: "20vh" })}
 `;
+
 const Info = styled.div`
   position: absolute;
   top: 0;
@@ -30,11 +28,10 @@ const Info = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
 const Title = styled.h1`
-  color: white;
-  margin-bottom: 20px;
-  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
-    0px 18px 23px rgba(0, 0, 0, 0.1);
+    color:white;
+    margin-bottom: 20px;
 `;
 const Button = styled.button`
   padding: 20px;

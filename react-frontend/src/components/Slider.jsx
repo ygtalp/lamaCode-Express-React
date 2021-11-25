@@ -2,14 +2,15 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
-  margin-top: 40px;
   width: 100%;
   height: 100vh;
   display: flex;
   position: relative;
   overflow: hidden;
+  ${mobile({ display: "none" })}
 `;
 
 const Arrow = styled.div`
@@ -62,8 +63,6 @@ const InfoContainer = styled.div`
 
 const Title = styled.h1`
   font-size: 70px;
-  text-shadow: 0px 15px 5px rgba(0, 0, 0, 0.1),
-    10px 20px 5px rgba(0, 0, 0, 0.05), -10px 20px 5px rgba(0, 0, 0, 0.05);
 `;
 
 const Desc = styled.p`
@@ -71,8 +70,6 @@ const Desc = styled.p`
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;
-  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
-    0px 18px 23px rgba(0, 0, 0, 0.1);
 `;
 
 const Button = styled.button`
@@ -81,11 +78,9 @@ const Button = styled.button`
   background-color: transparent;
   cursor: pointer;
   border: 1px solid gray;
-
   background: linear-gradient(to left, transparent 50%, black 50%) right;
   background-size: 200%;
   transition: 0.5s ease-out;
-
   &:hover {
     background-position: left;
     color: white;
