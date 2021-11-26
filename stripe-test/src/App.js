@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Pay from "./Pay";
+import Success from "./Success";
 import Home from "./Home";
 
 const App = () => {
@@ -9,12 +10,12 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/pay" element={<Pay />} />
-          {/* <Routes path="/success">
-          <Success />
-        </Routes> */}
         </Routes>
         <Routes>
           <Route path="/" element={<Home />} />
+        </Routes>
+        <Routes>
+          <Route path="/success" element={<Success />} />
         </Routes>
       </Router>
     </div>
