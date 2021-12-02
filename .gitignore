@@ -4,7 +4,6 @@
 /node_modules
 react-frontend/node_modules
 payment-stripe-jwt-api/node_modules
-payment-stripe-jwt-api/.env
 payment-stripe-jwt-api/routes/stripe.js
 stripe-test/node_modules
 /.pnp
