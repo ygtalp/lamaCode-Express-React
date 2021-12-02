@@ -27,16 +27,19 @@ export const categories = [
     id: 1,
     img: "https://i.hizliresim.com/h6tirqu.png",
     title: "SHIRT STYLE!",
+    cat: "women"
   },
   {
     id: 2,
     img: "https://i.hizliresim.com/40ai6lk.png",
     title: "LOUNGEWEAR LOVE",
+    cat: "coat"
   },
   {
     id: 3,
     img: "https://i.hizliresim.com/ru7k1wm.png",
     title: "LIGHT JACKETS",
+    cat: "jean"
   },
 ];
 

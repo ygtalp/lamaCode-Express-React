@@ -1,17 +1,29 @@
 import { Add, Remove } from "@material-ui/icons";
-import React from "react";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { publicRequest } from "../requestMethods";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
+import {
+  Dropdown,
+  DropdownButton,
+  Form,
+  FloatingLabel,
+  ToggleButtonGroup,
+  ToggleButton,
+} from "react-bootstrap";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  ${mobile({ padding: "10px", flexDirection:"column" })}
+  ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 const ImgContainer = styled.div`
   flex: 1;
@@ -69,6 +81,10 @@ const FilterColor = styled.div`
   background-color: ${(props) => props.color};
   margin: 0px 5px;
   cursor: pointer;
+  border: 1px solid gray;
+  &[color~="::active"] {
+    border: 5px solid black;
+  }
 `;
 
 const FilterSize = styled.select`
@@ -122,50 +138,126 @@ const Button = styled.button`
 const FilterSizeOption = styled.option``;
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProduct();
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const handleClick = () => {
+    if (!size) {
+      console.log(size);
+      alert("select size");
+    } else if (!color) {
+      console.log(color);
+      alert("select color");
+    } else {
+      dispatch(addProduct({ ...product, quantity, color, size }));
+    }
+  };
+
+  const handleSize = (e) => {
+    console.log(e);
+    setSize(e.target.value);
+    console.log(e.target.value);
+  };
   return (
     <Container>
-      <Announcement />
       <Navbar />
+      <Announcement />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://i.hizliresim.com/prap1mm.jpg" />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Denim Jumpsuit</Title>
-          <Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. At erat
-            pellentesque adipiscing commodo elit at imperdiet. Nisl tincidunt
-            eget nullam non nisi est. Dictum non consectetur a erat nam. Sit
-            amet est placerat in egestas erat imperdiet. Eu nisl nunc mi ipsum
-            faucibus vitae aliquet.
-          </Desc>
-          <Price>$ 20</Price>
+          <Title>{product.title}</Title>
+          <Desc>{product.desc}</Desc>
+          <Price>$ {product.price}</Price>
           <FilterContainer>
             <Filter>
-              <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              <option>Select color</option>
+              {product.color?.map((c) => (
+                <FilterColor
+                  type="radio"
+                  color={c}
+                  key={c}
+                  onClick={() => setColor(c)}
+                >
+                </FilterColor>
+              ))}
+
+              {/* <DropdownButton
+                id="dropdown-basic-button"
+                title="Color"
+                placeholder="Select Size"
+                variant="secondary"
+              >
+                {product.color?.map((c) => (
+                  <Dropdown.Item color={c} key={c} onClick={() => setColor(c)}>
+                    <button
+                      style={{
+                        background: `${c}`,
+                        padding: "15px",
+                        borderRadius: "30px",
+                        marginRight: "20px",
+                      }}
+                    ></button>
+                    {c}
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton> */}
             </Filter>
             <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
-              </FilterSize>
+              <Form.Select
+                label="Select Size"
+                onChange={(e) => setSize(e.target.value)}
+              >
+                <option>Select size</option>
+                {product.size?.map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </Form.Select>
+
+              {/* <FilterSize
+                placeholder={"Select Size"}
+                onChange={(e) => setSize(e.target.value)}
+                onSelect={(e) => setSize(e.target.value)}
+              >
+                {product.size?.map((s) => (
+                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                ))}
+              </FilterSize> */}
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove clr="black" />
-              <Amount>1</Amount>
-              <Add clr="black" />
+              <Remove onClick={() => handleQuantity("dec")} />
+              <Amount>{quantity}</Amount>
+              <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
