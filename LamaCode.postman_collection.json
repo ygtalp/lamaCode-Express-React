@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "e76344e7-9780-4d41-ad50-ba3fe378c76f",
+		"name": "LamaCode",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "REGISTER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"lamacode\",\r\n    \"email\":\"lamacode@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN AS USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"lamacode\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN AS ADMIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admintest\",\r\n    \"password\": \"admintest\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE USERNAME",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTA0YTRmMWM5NmY2NmNiZjVmOWJhMyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Mzc4OTQ5MTEsImV4cCI6MTYzODE1NDExMX0.4yAuAvQBaPwAKEjz7df-kT3j4eEE6mX_ECpnR1x1YCw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"lamaCode\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/61a04a4f1c96f66cbf5f9ba3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"61a04a4f1c96f66cbf5f9ba3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET USER AS ADMIN",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTA1NGViYmMxNWQ2MDI5MTc4YzM4YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzg5NzQ4MywiZXhwIjoxNjM4MTU2NjgzfQ.vKNAdzZht6tua_uiGXjMaX8fnWV7BZUGlS6QyUl4I8Q",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/users/find/61a054d1bc15d6029178c388",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"find",
+						"61a054d1bc15d6029178c388"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL USERS AS ADMIN",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYThjZDg2ZjFlYTZjZjc1ZWFjNTdjNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzODgyMTIzNywiZXhwIjoxNjM5MDgwNDM3fQ.-BvQwZUxq2K2uwaiqS23-lEQI7idu1H263KMtW8_ZUc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL USER STATS ID IS MONTH",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYThjZDg2ZjFlYTZjZjc1ZWFjNTdjNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzODgyMTIzNywiZXhwIjoxNjM5MDgwNDM3fQ.-BvQwZUxq2K2uwaiqS23-lEQI7idu1H263KMtW8_ZUc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/users/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE PRODUCT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTA1NGViYmMxNWQ2MDI5MTc4YzM4YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzg5NzQ4MywiZXhwIjoxNjM4MTU2NjgzfQ.vKNAdzZht6tua_uiGXjMaX8fnWV7BZUGlS6QyUl4I8Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Puma Tshirt\",\r\n    \"desc\": \"test\",\r\n    \"img\": \"test img\",\r\n    \"categories\": [\r\n        \"tshirt\",\r\n        \"man\"\r\n    ],\r\n    \"size\": \"M\",\r\n    \"color\": \"gray\",\r\n    \"price\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL PRODUCTS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTA1NGViYmMxNWQ2MDI5MTc4YzM4YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzg5NzQ4MywiZXhwIjoxNjM4MTU2NjgzfQ.vKNAdzZht6tua_uiGXjMaX8fnWV7BZUGlS6QyUl4I8Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Puma Tshirt\",\r\n    \"desc\": \"test\",\r\n    \"img\": \"test img\",\r\n    \"categories\": [\r\n        \"tshirt\",\r\n        \"man\"\r\n    ],\r\n    \"size\": \"M\",\r\n    \"color\": \"gray\",\r\n    \"price\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET PRODUCT WITH CATEGORY",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTA1NGViYmMxNWQ2MDI5MTc4YzM4YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzg5NzQ4MywiZXhwIjoxNjM4MTU2NjgzfQ.vKNAdzZht6tua_uiGXjMaX8fnWV7BZUGlS6QyUl4I8Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Puma Tshirt\",\r\n    \"desc\": \"test\",\r\n    \"img\": \"test img\",\r\n    \"categories\": [\r\n        \"tshirt\",\r\n        \"man\"\r\n    ],\r\n    \"size\": \"M\",\r\n    \"color\": \"gray\",\r\n    \"price\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products?category=bag",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "bag"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE ORDER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTA1NGViYmMxNWQ2MDI5MTc4YzM4YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzg5NzQ4MywiZXhwIjoxNjM4MTU2NjgzfQ.vKNAdzZht6tua_uiGXjMaX8fnWV7BZUGlS6QyUl4I8Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"61a054d1bc15d6029178c388\",\r\n    \"products\": [\r\n        {\r\n            \"productId\": \"123erasd\",\r\n            \"quantity\": 3\r\n        },\r\n        {\r\n            \"productId\": \"123erse\",\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"amount\": 50,\r\n    \"address\": \"USA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "INCOME",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYThjZDg2ZjFlYTZjZjc1ZWFjNTdjNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzODgyMTIzNywiZXhwIjoxNjM5MDgwNDM3fQ.-BvQwZUxq2K2uwaiqS23-lEQI7idu1H263KMtW8_ZUc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"61a054d1bc15d6029178c388\",\r\n    \"products\": [\r\n        {\r\n            \"productId\": \"123erasd\",\r\n            \"quantity\": 3\r\n        },\r\n        {\r\n            \"productId\": \"123erse\",\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"amount\": 50,\r\n    \"address\": \"USA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/orders/income",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"orders",
+						"income"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
